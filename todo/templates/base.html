@@ -41,7 +41,7 @@
         <h1 id="greeting" class="hello">Hello, </h1>
         <h1 class="username">{{user.username}}</h1>
         <!-- Client IP info -->
-        <p hidden>{% load tags %}{% get_client_ip request %}</p>
+        <p>{% load tags %}{% get_client_ip request %}</p>
        
       </div>
 
