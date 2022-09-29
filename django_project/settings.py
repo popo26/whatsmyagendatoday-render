@@ -30,9 +30,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 
 
-#Heroku
-# SECRET_KEY =os.environ["DJANGO_SECRET_KEY"] or "secret"
-
 #Render
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', default='your secret key')
 
@@ -41,8 +38,6 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', default='your secret key')
 # DEBUG = os.getenv("DEBUG") or False
 
 
-# #Heroku
-# DEBUG = os.environ.get('DJANGO_DEBUG', "") == "True"
 
 #Render
 DEBUG = 'RENDER' not in os.environ
@@ -117,10 +112,10 @@ WSGI_APPLICATION = 'django_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get("DATABASE_USER"),
-        'USER': os.environ.get("DATABASE_USER"),
-        'PASSWORD': os.environ.get('DATABASE_PASSWORD'),
-        'HOST': os.environ.get("DATABASE_HOST"),
+        'NAME': os.getenv("DATABASE_USER"),
+        'USER': os.getenv("DATABASE_USER"),
+        'PASSWORD': os.getenv('DATABASE_PASSWORD'),
+        'HOST': os.getenv("DATABASE_HOST"),
         'PORT': '5432',
     }
 }
