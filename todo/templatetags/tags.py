@@ -19,9 +19,12 @@ ip_a = []
 
 @register.simple_tag
 def get_client_ip(request):
-    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    # x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    x_forwarded_for = request.META.get('True-Client-IP')
+    print(f"true-client-ip is {x_forwarded_for}")
     if x_forwarded_for:
-        ip = x_forwarded_for.split(',')[-1].strip()
+        # ip = x_forwarded_for.split(',')[-1].strip()
+        ip = x_forwarded_for
         if len(ip_a):
             ip_a.clear()
             ip_a.append(ip)
@@ -30,6 +33,7 @@ def get_client_ip(request):
         # print(f"ip_a1 insde is {ip_a[0]}")
     else:
         ip = request.META.get('REMOTE_ADDR')
+        print(f"ip is {ip}")
         if len(ip_a):
             ip_a.clear()
             ip_a.append(ip)

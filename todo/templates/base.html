@@ -41,7 +41,8 @@
         <h1 id="greeting" class="hello">Hello, </h1>
         <h1 class="username">{{user.username}}</h1>
         <!-- Client IP info -->
-        <p>{% load tags %}{% get_client_ip request %}</p>
+        <p hidden>{% load tags %}{% get_client_ip request %}</p>
+        <!-- Once deployed on Render it gives private IP not Public IP -->
        
       </div>
 
